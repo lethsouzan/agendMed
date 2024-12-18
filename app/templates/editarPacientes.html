@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Paciente</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-primary text-center mb-4">Editar Paciente</h1>
+        <form method="POST">    
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="nome" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="nome" name="nome" value="{{dadosPaciente.nome}}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="cpf" class="form-label">CPF</label>
+                <input type="text" class="form-control" id="cpf" name="cpf" value="{{dadosPaciente.cpf}}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="funcao" class="form-label">Função</label>
+                <input type="text" class="form-control" id="funcao" name="funcao" value="{{dadosPaciente.funcao}}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="empresa" class="form-label">Empresa</label>
+                <input type="text" class="form-control" id="empresa" name="empresa" value="{{dadosPaciente.empresa}}" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="cnpj_empresa" class="form-label">CNPJ da Empresa</label>
+                <input type="text" class="form-control" id="cnpj_empresa" name="cnpj_empresa" value="{{dadosPaciente.cnpj_empresa}}" required>
+            </div>
+
+            <div class="text-center">
+                <a href="{% url 'listaPacientes' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                <button type="submit" class="btn btn-primary btn-lg">Atualizar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

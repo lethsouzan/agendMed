@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Agendamentos</title>
+    {% load static %}
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .table-header {
+            background-color: #0056b3; 
+            color: white;
+        }
+        .table-striped tbody tr:nth-of-type(odd) {
+            background-color: #e3f2fd; 
+        }
+        .table-striped tbody tr:nth-of-type(even) {
+            background-color: #bbdefb; 
+        }
+        .table-hover tbody tr:hover {
+            background-color: #90caf9; 
+        }
+    </style>
+</head>
+<body class="bg-light">
+    <div class="container-fluid mt-5">
+        <div class="row">
+            <!-- Coluna das Pílulas e Logo -->
+            <div class="col-md-3">
+                <div class="sidebar-logo">
+                    <a href="{% url 'index' %}" title="Perfil">
+                    <img src="{% static 'img/logo.png' %}" width="120" height="100" class="d-inline-block align-top" alt="Logo da página">
+                </a>
+                    <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                        <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="{% url 'agendarAso' %}" role="tab" aria-controls="v-pills-profile" aria-selected="false">Agendar ASO</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{% url 'listaAgendamentos' %}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Meus Agendamentos</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{% url 'listaPacientes' %}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Pacientes</a>
+                        <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="{% url 'listaMedicos' %}" role="tab" aria-controls="v-pills-messages" aria-selected="false">Médicos</a>
+                        <a class="nav-link" id="v-pills-settings-tab" data-toggle="pill" href="{% url 'listaASOs' %}" role="tab" aria-controls="v-pills-settings" aria-selected="false">Tipos de ASO</a>
+                        <a class="nav-link active" id="v-pills-home-tab" data-toggle="pill" href="{% url 'listaResultados' %}" role="tab" aria-controls="v-pills-home" aria-selected="true">Resultados</a>
+
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-9">
+                <h1 class="text-primary text-center mb-4">Lista de Resultados</h1>
+                <h4 class="alert alert-primary" role="alert">Sem resultados para exibir!</h4>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Script do Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+    

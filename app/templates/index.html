@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial</title>
+    {% load static %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+          integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+          crossorigin="anonymous">
+    <script>
+        function filtrarConteudo() {
+            let input = document.getElementById("barraPesquisa").value.toLowerCase();
+            let cards = document.getElementsByClassName("card");
+
+            for (let i = 0; i < cards.length; i++) {
+                let card = cards[i];
+                let textoCard = card.textContent.toLowerCase();
+
+                if (textoCard.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            }
+        }
+    </script>
+</head>
+<body>
+
+<header>
+<nav class="navbar navbar-light bg-light">
+    <img src="{% static 'img/logo.png' %}" width="120" height="100" class="d-inline-block align-top" alt="Logo da página">
+    <span class="navbar-brand"></span>
+    <form class="form-inline">
+        <input id="barraPesquisa" class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Pesquisar" onkeyup="filtrarConteudo()">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="button" onclick="filtrarConteudo()">Pesquisar</button>
+        <a href="#" title="Perfil">
+          <img src="https://cdn-icons-png.flaticon.com/512/6063/6063734.png" width="40" height="40" alt="perfil" class="rounded-circle">
+        </a>
+      </form>
+</nav>
+</header>
+
+<main class="container py-4">
+<div class="row">
+    <div class="col-md-4 mb-3 mb-sm-0 py-4">
+      <div class="card col-md-8 ">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_1.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'agendarAso' %}" class="btn btn-primary row d-flex justify-content-center">Agendar ASO</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3 mb-sm-0 py-4">
+      <div class="card col-md-8 ">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_2.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'listaAgendamentos' %}" class="btn btn-primary row d-flex justify-content-center">Meus Agendamentos</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3 mb-sm-0 py-4">
+      <div class="card col-md-8">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_3.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'listaPacientes' %}" class="btn btn-primary row d-flex justify-content-center">Pacientes</a>
+        </div>
+      </div>
+  </div>
+
+  <div class="col-md-4">
+      <div class="card col-md-8">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_4.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'listaMedicos' %}" class="btn btn-primary row d-flex justify-content-center">Médicos</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4 mb-3 mb-sm-0">
+      <div class="card col-md-8">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_5.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'listaASOs' %}" class="btn btn-primary row d-flex justify-content-center">Tipos de ASO</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card col-md-8">
+        <div class="card-body">
+        <img class="card-img-top" src="{% static 'img/cartao_6.png' %}" max-width="100%" height="auto" alt="Imagem de capa do card">
+          <a href="{% url 'listaResultados' %}" class="btn btn-primary row d-flex justify-content-center">Resultados</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer class="bg-light .text-secondary text-center py-3">
+    <div class="container">
+        <p class="mb-0">© 2024 AgendMed. Todos os direitos reservados.</p>
+        <p class="mb-0">
+            <a href="#" class="text-decoration-none text-secondary me-3">Política de Privacidade</a>
+            <a href="#" class="text-decoration-none text-secondary">Termos de Uso</a>
+        </p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Agendamento</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="text-primary text-center mb-4">Editar Agendamento</h1>
+        <form method="POST">    
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="id_paciente" class="form-label">Nome do Paciente</label>
+                <select class="form-select" id="id_paciente" name="id_paciente" required>
+                    <option value="{{dadosAgendamento.id_paciente.nome}}" selected>Selecione um paciente</option>
+                    {% for paciente in pacientes %}
+                    <option value="{{ paciente.id }}">{{ paciente.nome }} - CPF: {{ paciente.cpf }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="id_aso" class="form-label">ASO</label>
+                <select class="form-select" id="id_aso" name="id_aso">
+                    <option value="" selected>Selecione um tipo de ASO</option>
+                    {% for aso in asos %}
+                    <option value="{{ aso.id }}">{{ aso.tipo }} - R$ {{ aso.valor }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="id_medico" class="form-label">Médico</label>
+                <select class="form-select" id="id_medico" name="id_medico" required>
+                    <option value="{{dadosAgendamento.id_medico.nome}}" selected>Selecione um médico</option>
+                    {% for medico in medicos %}
+                    <option value="{{ medico.id }}">{{ medico.nome }} - CRM: {{ medico.crm }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="cnpj_empresa" class="form-label">Data do Agendamento</label>
+                <input type="datetime-local" class="form-control" id="data_agendamento" name="data_agendamento" value="{{dadosAgendamento.data_agendamento}}" required>
+            </div>
+
+            <div class="text-center">
+                <a href="{% url 'listaAgendamentos' %}" class="btn btn-secondary btn-lg">Cancelar</a>
+                <button type="submit" class="btn btn-primary btn-lg">Atualizar</button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
